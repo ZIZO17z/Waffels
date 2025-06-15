@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="waffle-icon.png" />
+    <title>Waffles Club</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            background: #fff8f0;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background: #f1c40f;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav a {
+            margin: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            color: #000;
+            padding: 10px;
+            position: relative;
+            transition: all 0.3s ease;
+            border-radius: 20px;
+        }
+        
+        nav a::after {
+            content: "";
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            width: 0%;
+            height: 3px;
+            background: #000;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        nav a:hover::after {
+            width: 80%;
+        }
+        
+        nav a:hover {
+            background-color: #fff8f0;
+        }
+        
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+        
+        section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 30px;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .waffle {
+            position: relative;
+            width: 150px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+            cursor: pointer;
+        }
+        
+        .waffle.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .waffle img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+            transition: transform 0.3s ease;
+        }
+        
+        .waffle img.clicked {
+            animation: bounce 0.4s ease;
+        }
+        
+        @keyframes bounce {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .speech-bubble {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #f1c40f;
+            color: #222;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .speech-bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 8px solid transparent;
+            border-top-color: #f1c40f;
+        }
+        
+        .center-text {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+            max-width: 500px;
+            padding: 0 20px;
+        }
+        
+        .center-text.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .center-text h2 {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+        
+        .center-text p {
+            margin: 10px 0;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        #viewer {
+            width: 100%;
+            height: 500px;
+            background: #f4f4f4;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 1.2s ease;
+            margin: 30px auto;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        #viewer.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .audio-container {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 500px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #f1c40f;
+            margin-top: auto;
+        }
+        
+        footer a {
+            color: #000;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                flex-direction: column;
+                padding: 20px;
+                gap: 20px;
+            }
+            .waffle {
+                width: 120px;
+            }
+            #viewer {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Waffles Club 🧇</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="https://en.wikipedia.org/wiki/Waffle" target="_blank" rel="noopener noreferrer">Waffle History</a>
+            <a href="https://wafflegame.net/" target="_blank" rel="noopener noreferrer">Waffle Game</a>
+            <a href="about.html">About Us</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section>
+            <div class="waffle" onclick="playClickSound(this)">
+                <div class="speech-bubble">Click Me!</div>
+                <img src="waffle-left.png" alt="Golden waffle with syrup">
+            </div>
+
+            <div class="center-text">
+                <h2>The Best <span style="color: #e67e22;">Waffles</span> Ever</h2>
+                <p>We serve the best waffles in town with secret toppings and musical vibes. Join our club for exclusive waffle experiences!</p>
+
+            </div>
+
+            <div class="waffle" onclick="playClickSound(this)">
+                <div class="speech-bubble">Click Me!</div>
+                <img src="waffle-right.png" alt="Waffle with berries">
+            </div>
+        </section>
+
+        <audio id="clickSound" src="click-sound.mp3" preload="auto"></audio>
+
+        <div id="viewer"></div>
+
+        <div class="audio-container">
+            <audio controls>
+        <source src="waffle-theme.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Waffles Club | <a href="mailto:contact@wafflesclub.com">Contact Us</a></p>
+    </footer>
+
+
+    <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+    <script type="importmap">
+        { "imports": { "three": "https://unpkg.com/three@0.163.0/build/three.module.js", "three/addons/": "https://unpkg.com/three@0.163.0/examples/jsm/" } }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three'; import { OrbitControls } from 'three/addons/controls/OrbitControls.js'; function initViewer() { const viewer = document.getElementById('viewer'); if (!viewer) return; const scene = new THREE.Scene(); scene.background =
+        new THREE.Color(0xf8f4e8); const camera = new THREE.PerspectiveCamera( 45, viewer.clientWidth / viewer.clientHeight, 0.1, 100 ); camera.position.set(0, 1.5, 4); const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); renderer.setSize(viewer.clientWidth,
+        viewer.clientHeight); renderer.setPixelRatio(window.devicePixelRatio); viewer.appendChild(renderer.domElement); const ambient = new THREE.AmbientLight(0xffffff, 0.7); scene.add(ambient); const dir = new THREE.DirectionalLight(0xffffff, 0.7); dir.position.set(5,
+        10, 7.5); scene.add(dir); const controls = new OrbitControls(camera, renderer.domElement); controls.enableDamping = true; const geometry = new THREE.TorusGeometry(1, 0.4, 16, 32); const material = new THREE.MeshStandardMaterial({ color: 0xf1c40f,
+        roughness: 0.4, metalness: 0.1 }); const waffleMesh = new THREE.Mesh(geometry, material); waffleMesh.rotation.x = Math.PI / 2; scene.add(waffleMesh); viewer.classList.add('show'); function animate() { requestAnimationFrame(animate); waffleMesh.rotation.z
+        += 0.01; controls.update(); renderer.render(scene, camera); } animate(); window.addEventListener('resize', () => { camera.aspect = viewer.clientWidth / viewer.clientHeight; camera.updateProjectionMatrix(); renderer.setSize(viewer.clientWidth,
+        viewer.clientHeight); }); } document.addEventListener('DOMContentLoaded', initViewer);
+    </script>
+
+    <script>
+        function playClickSound(el) {
+            const sound = document.getElementById("clickSound");
+            sound.currentTime = 0;
+            sound.play().catch(e => console.log("Audio play failed:", e));
+
+            const img = el.querySelector("img");
+            img.classList.add("clicked");
+            setTimeout(() => img.classList.remove("clicked"), 400);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("show");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1
+                }
+            );
+
+            document.querySelectorAll('.waffle, .center-text, #viewer').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+
+</html>

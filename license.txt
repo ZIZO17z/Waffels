@@ -1,0 +1,11 @@
+Model Information:
+* title:	Belgian waffles draft
+* source:	https://sketchfab.com/3d-models/belgian-waffles-draft-a8d00d5e6f6f4703ae41fd146025cd2c
+* author:	Rixael (https://sketchfab.com/rixael)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Belgian waffles draft" (https://sketchfab.com/3d-models/belgian-waffles-draft-a8d00d5e6f6f4703ae41fd146025cd2c) by Rixael (https://sketchfab.com/rixael) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fun at Waffles Club</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Comic+Neue:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="icon" href="waffle-icon.png" type="image/png">
+    <style>
+         :root {
+            --primary: #f1c40f;
+            --secondary: #e67e22;
+            --light: #fff8f0;
+            --dark: #333;
+            --accent: #e74c3c;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            background: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 10% 20%, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 90%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background: var(--primary);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "🧇";
+            position: absolute;
+            font-size: 120px;
+            opacity: 0.1;
+            top: -30px;
+            right: -30px;
+            transform: rotate(20deg);
+            z-index: 0;
+        }
+        
+        h1 {
+            font-family: 'Comic Neue', cursive;
+            margin: 0;
+            font-size: 2.5rem;
+            color: var(--dark);
+            text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+        
+        nav {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        
+        nav a {
+            margin: 5px 10px;
+            text-decoration: none;
+            font-weight: bold;
+            color: var(--dark);
+            padding: 8px 20px;
+            position: relative;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            overflow: hidden;
+        }
+        
+        nav a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: all 0.5s ease;
+        }
+        
+        nav a:hover {
+            background-color: var(--light);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav a:hover::before {
+            left: 100%;
+        }
+        
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+        
+        section {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+        
+        .center-text {
+            text-align: center;
+        }
+        
+        h2 {
+            font-family: 'Comic Neue', cursive;
+            color: var(--secondary);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .joke-box {
+            background: var(--light);
+            border: 3px dashed var(--primary);
+            padding: 25px;
+            margin: 25px auto;
+            max-width: 600px;
+            text-align: center;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(241, 196, 15, 0.2);
+            transition: all 0.5s ease;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            position: relative;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .joke-box:hover {
+            transform: rotate(-1deg) scale(1.02);
+            box-shadow: 0 8px 25px rgba(241, 196, 15, 0.3);
+        }
+        
+        .joke-box::before,
+        .joke-box::after {
+            content: "“";
+            position: absolute;
+            font-size: 80px;
+            color: var(--primary);
+            opacity: 0.2;
+            font-family: serif;
+        }
+        
+        .joke-box::before {
+            top: -20px;
+            left: 10px;
+        }
+        
+        .joke-box::after {
+            bottom: -50px;
+            right: 10px;
+            transform: rotate(180deg);
+        }
+        
+        .gif-container {
+            position: relative;
+            margin: 25px auto;
+            max-width: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .gif-container:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gif {
+            width: 100%;
+            display: block;
+            transition: all 0.5s ease;
+        }
+        
+        .fun-button {
+            background-color: var(--primary);
+            color: var(--dark);
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 0 rgba(230, 126, 34, 0.5);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Comic Neue', cursive;
+        }
+        
+        .fun-button:hover {
+            background-color: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 0 rgba(230, 126, 34, 0.5);
+        }
+        
+        .fun-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 rgba(230, 126, 34, 0.5);
+        }
+        
+        .fun-button::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        
+        .fun-button:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+        
+        #weirdFact {
+            font-size: 1.2rem;
+            background: rgba(241, 196, 15, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid var(--secondary);
+            transition: all 0.3s ease;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #weirdFact:hover {
+            transform: rotate(0.5deg);
+            background: rgba(241, 196, 15, 0.3);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--primary);
+            margin-top: auto;
+            font-family: 'Comic Neue', cursive;
+            font-weight: bold;
+            position: relative;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            position: relative;
+        }
+        
+        footer a::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        footer a:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary);
+            opacity: 0;
+            z-index: 9999;
+            animation: confetti-fall 5s linear forwards;
+        }
+        
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .waffle-emoji {
+            position: fixed;
+            font-size: 30px;
+            opacity: 0;
+            z-index: 9998;
+            animation: emoji-float 3s ease-out forwards;
+        }
+        
+        @keyframes emoji-float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            section {
+                padding: 20px;
+                margin: 15px auto;
+            }
+            .joke-box {
+                padding: 15px;
+                font-size: 1rem;
+            }
+            .fun-button {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="animate__animated animate__bounceIn">Fun Zone 🤪 at the Waffles Club</h1>
+        <nav>
+            <a href="index.html" class="animate__animated animate__fadeIn animate__delay-1s">Home</a>
+            <a href="about.html" class="animate__animated animate__fadeIn animate__delay-1s">About</a>
+            <a href="fun.html" class="animate__animated animate__fadeIn animate__delay-1s">Fun</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="center-text animate__animated animate__fadeIn animate__delay-2s">
+            <h2>Daily Dose of Laughter �</h2>
+            <div class="joke-box" id="jokeBox">
+                Click below for a waffle joke so good you might syrup your pants!
+            </div>
+            <button class="fun-button" id="jokeBtn">Tell me a joke</button>
+        </section>
+
+        <section class="center-text animate__animated animate__fadeIn animate__delay-3s">
+            <h2>Random Meme Generator 🎉</h2>
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/l3q2K5jinAlChoCLS/giphy.gif" alt="Funny Waffle" class="gif" id="gifImg">
+            </div>
+            <button class="fun-button" id="gifBtn">New GIF</button>
+        </section>
+
+        <section class="center-text animate__animated animate__fadeIn animate__delay-4s">
+            <h2>Weird Waffle Facts 🧠</h2>
+            <p id="weirdFact">Click the button to go... beyond breakfast 🪐</p>
+            <button class="fun-button" id="factBtn">Give me a weird fact</button>
+        </section>
+    </main>
+
+    <footer class="animate__animated animate__fadeIn animate__delay-5s">
+        <p>😂 Waffles Club never takes syrupiously • <a href="index.html">Back to Safety</a></p>
+    </footer>
+
+    <script src="fun.js"></script>
+</body>
+
+</html>
